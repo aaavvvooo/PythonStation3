@@ -6,9 +6,14 @@ def get_input()->list[int]:
     int_args = []
     if len(args) == 3:
         for elem in args:
+            if not elem.isnumeric():
+                print("Wrong input")
+                exit(1)
             if int(elem) >= 0 :
                 int_args.append(int(elem))
-    return int_args
+        return int_args
+    print("Wrong input")
+    exit(1)
 
 def main():
     args = get_input()
