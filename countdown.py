@@ -16,13 +16,20 @@ def get_input()->list[int]:
     exit(1)
 
 def main():
+    line = ""
     args = get_input()
     if args[2] < 0 or args[2] >= 60 or args[1] < 0 or args[1] >= 60:
         print("Wrong input")
         exit(1)
     sum = args[0] * 3600 + args[1] * 60 + args[2]
     while sum >= 0:
-        print(f"{sum // 3600}:{(sum // 60 % 60)}:{sum % 60}")
+        line += '0' + str(sum // 3600) if len(str(sum // 3600)) == 1 else str(sum // 3600)
+        line += ':'
+        line += '0' + str(sum // 60 % 60) if len(str(sum // 60 % 60)) == 1 else str(sum // 60 % 60)
+        line += ':'
+        line += '0' + str(sum % 60) if len(str(sum % 60)) == 1 else str(sum % 60)
+        print(line)
+        line = ""
         sleep(1)
         sum -= 1
    
